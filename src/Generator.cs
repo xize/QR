@@ -48,6 +48,7 @@ namespace src.QR_GEN
             MemoryStream stream = new MemoryStream();
             img.Save(stream, ImageFormat.Jpeg);
             byte[] bytes = stream.GetBuffer();
+            stream.Flush();
             stream.Close();
             return bytes;
         }
