@@ -33,6 +33,7 @@
             this.picture = new System.Windows.Forms.PictureBox();
             this.generatebtn = new System.Windows.Forms.Button();
             this.savebtn = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.picture)).BeginInit();
             this.SuspendLayout();
             // 
@@ -68,7 +69,7 @@
             // 
             // savebtn
             // 
-            this.savebtn.Location = new System.Drawing.Point(116, 371);
+            this.savebtn.Location = new System.Drawing.Point(8, 371);
             this.savebtn.Name = "savebtn";
             this.savebtn.Size = new System.Drawing.Size(75, 23);
             this.savebtn.TabIndex = 3;
@@ -76,11 +77,21 @@
             this.savebtn.UseVisualStyleBackColor = true;
             this.savebtn.Click += new System.EventHandler(this.button1_Click);
             // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(89, 371);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 4;
+            this.button1.Text = "open";
+            this.button1.UseVisualStyleBackColor = true;
+            // 
             // Window
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(285, 404);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.savebtn);
             this.Controls.Add(this.generatebtn);
             this.Controls.Add(this.picture);
@@ -100,6 +111,7 @@
         public System.Windows.Forms.PictureBox picture;
         private System.Windows.Forms.Button generatebtn;
         private System.Windows.Forms.Button savebtn;
+        private System.Windows.Forms.Button button1;
     }
 }
 
