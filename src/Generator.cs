@@ -1,7 +1,11 @@
 ﻿using System.Drawing;
+using System.Drawing.Imaging;
+using System.IO;
+using System.Net.Http;
 using System.Windows.Forms;
 using ZXing;
 using ZXing.Common;
+using ZXing.QrCode;
 
 namespace src.QR_GEN
 {
@@ -26,6 +30,26 @@ namespace src.QR_GEN
             };
 
             return writer.Write(text);
+        }
+
+        public string readQR(Image image)
+        {
+            Image img = new Bitmap(image, 52, 52);
+            QRCodeReader reader = new QRCodeReader();
+            BitMatrix matrix = new BitMatrix(img.Width+img.Height);
+            LuminanceSource lum = new RGBLuminanceSource(getBytesFromImage(img), 52, 52);
+            BinaryBitmap binary = new BinaryBitmap(new GlobalHistogramBinarizer(lum));
+            Result result = reader.decode(binary);
+            return result.Text;
+        }
+
+        private byte[] getBytesFromImage(Image img)
+        {
+            MemoryStream stream = new MemoryStream();
+            img.Save(stream, ImageFormat.Jpeg);
+            byte[] bytes = stream.GetBuffer();
+            stream.Close();
+            return bytes;
         }
 
         public void generate(Window window)
