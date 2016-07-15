@@ -33,7 +33,8 @@
             this.picture = new System.Windows.Forms.PictureBox();
             this.generatebtn = new System.Windows.Forms.Button();
             this.savebtn = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
+            this.openbtn = new System.Windows.Forms.Button();
+            this.dialog = new System.Windows.Forms.OpenFileDialog();
             ((System.ComponentModel.ISupportInitialize)(this.picture)).BeginInit();
             this.SuspendLayout();
             // 
@@ -75,23 +76,29 @@
             this.savebtn.TabIndex = 3;
             this.savebtn.Text = "save";
             this.savebtn.UseVisualStyleBackColor = true;
-            this.savebtn.Click += new System.EventHandler(this.button1_Click);
+            this.savebtn.Click += new System.EventHandler(this.savebtn_Click);
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(89, 371);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 4;
-            this.button1.Text = "open";
-            this.button1.UseVisualStyleBackColor = true;
+            this.openbtn.Location = new System.Drawing.Point(89, 371);
+            this.openbtn.Name = "openbtn";
+            this.openbtn.Size = new System.Drawing.Size(75, 23);
+            this.openbtn.TabIndex = 4;
+            this.openbtn.Text = "open";
+            this.openbtn.UseVisualStyleBackColor = true;
+            this.openbtn.Click += new System.EventHandler(this.openbtn_Click_1);
+            // 
+            // openFileDialog
+            // 
+            this.dialog.FileName = "openFileDialog";
+            this.dialog.FileOk += new System.ComponentModel.CancelEventHandler(this.dialog_FileOk);
             // 
             // Window
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(285, 404);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.openbtn);
             this.Controls.Add(this.savebtn);
             this.Controls.Add(this.generatebtn);
             this.Controls.Add(this.picture);
@@ -111,7 +118,8 @@
         public System.Windows.Forms.PictureBox picture;
         private System.Windows.Forms.Button generatebtn;
         private System.Windows.Forms.Button savebtn;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button openbtn;
+        private System.Windows.Forms.OpenFileDialog dialog;
     }
 }
 
