@@ -98,5 +98,10 @@ namespace src.QR_GEN
                 MessageBox.Show("please make sure you have something in the textbox !");
             }
         }
+
+        private void Window_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
