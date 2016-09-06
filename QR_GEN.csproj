@@ -108,7 +108,7 @@
     <None Include="src\App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="libs\zxing.dll" />
+    <EmbeddedResource Include="libs\zxing.dll" />
     <Content Include="src\qr.ico" />
   </ItemGroup>
   <ItemGroup>
