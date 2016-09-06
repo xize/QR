@@ -33,6 +33,7 @@
             this.picture = new System.Windows.Forms.PictureBox();
             this.generatebtn = new System.Windows.Forms.Button();
             this.savebtn = new System.Windows.Forms.Button();
+            this.append = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.picture)).BeginInit();
             this.SuspendLayout();
             // 
@@ -76,11 +77,22 @@
             this.savebtn.UseVisualStyleBackColor = true;
             this.savebtn.Click += new System.EventHandler(this.button1_Click);
             // 
+            // append
+            // 
+            this.append.AutoSize = true;
+            this.append.Location = new System.Drawing.Point(12, 376);
+            this.append.Name = "append";
+            this.append.Size = new System.Drawing.Size(88, 17);
+            this.append.TabIndex = 4;
+            this.append.Text = "append save";
+            this.append.UseVisualStyleBackColor = true;
+            // 
             // Window
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(285, 404);
+            this.Controls.Add(this.append);
             this.Controls.Add(this.savebtn);
             this.Controls.Add(this.generatebtn);
             this.Controls.Add(this.picture);
@@ -91,6 +103,7 @@
             this.Text = "QR Code Creator V1.0";
             ((System.ComponentModel.ISupportInitialize)(this.picture)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -100,6 +113,7 @@
         public System.Windows.Forms.PictureBox picture;
         private System.Windows.Forms.Button generatebtn;
         private System.Windows.Forms.Button savebtn;
+        private System.Windows.Forms.CheckBox append;
     }
 }
 
