@@ -42,6 +42,8 @@ namespace src.QR_GEN
             // 
             // textbox
             // 
+            this.textbox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.textbox.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.textbox.Location = new System.Drawing.Point(12, 278);
             this.textbox.Name = "textbox";
@@ -52,6 +54,8 @@ namespace src.QR_GEN
             // 
             // picture
             // 
+            this.picture.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.picture.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.picture.Location = new System.Drawing.Point(12, 12);
             this.picture.Name = "picture";
@@ -62,6 +66,7 @@ namespace src.QR_GEN
             // 
             // generatebtn
             // 
+            this.generatebtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.generatebtn.Location = new System.Drawing.Point(197, 371);
             this.generatebtn.Name = "generatebtn";
             this.generatebtn.Size = new System.Drawing.Size(75, 23);
@@ -72,6 +77,7 @@ namespace src.QR_GEN
             // 
             // savebtn
             // 
+            this.savebtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.savebtn.Location = new System.Drawing.Point(116, 371);
             this.savebtn.Name = "savebtn";
             this.savebtn.Size = new System.Drawing.Size(75, 23);
@@ -82,6 +88,7 @@ namespace src.QR_GEN
             // 
             // append
             // 
+            this.append.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.append.AutoSize = true;
             this.append.Location = new System.Drawing.Point(12, 376);
             this.append.Name = "append";
@@ -102,6 +109,7 @@ namespace src.QR_GEN
             this.Controls.Add(this.textbox);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MinimumSize = new System.Drawing.Size(301, 443);
             this.Name = "Window";
             this.Text = "QR Code Creator V1.1";
             ((System.ComponentModel.ISupportInitialize)(this.picture)).EndInit();
