@@ -42,6 +42,7 @@ namespace src.QR_GEN
             this.menustrip = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.closeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.picture)).BeginInit();
+            this.FormClosing += Form1_Close;
             this.menustrip.SuspendLayout();
             this.SuspendLayout();
             // 
