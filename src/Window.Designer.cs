@@ -38,7 +38,6 @@ namespace src.QR_GEN
             this.generatebtn = new System.Windows.Forms.Button();
             this.savebtn = new System.Windows.Forms.Button();
             this.append = new System.Windows.Forms.CheckBox();
-            this.autostart = new System.Windows.Forms.CheckBox();
             this.notifyIcon = new System.Windows.Forms.NotifyIcon(this.components);
             this.menustrip = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.closeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -60,6 +59,9 @@ namespace src.QR_GEN
             // 
             // picture
             // 
+            this.picture.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.picture.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.picture.Location = new System.Drawing.Point(12, 12);
             this.picture.Name = "picture";
@@ -95,30 +97,19 @@ namespace src.QR_GEN
             // 
             this.append.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.append.AutoSize = true;
-            this.append.Location = new System.Drawing.Point(151, 416);
+            this.append.Location = new System.Drawing.Point(12, 416);
             this.append.Name = "append";
             this.append.Size = new System.Drawing.Size(88, 17);
             this.append.TabIndex = 4;
             this.append.Text = "append save";
             this.append.UseVisualStyleBackColor = true;
             // 
-            // autostart
-            // 
-            this.autostart.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.autostart.AutoSize = true;
-            this.autostart.Location = new System.Drawing.Point(12, 416);
-            this.autostart.Name = "autostart";
-            this.autostart.Size = new System.Drawing.Size(136, 17);
-            this.autostart.TabIndex = 5;
-            this.autostart.Text = "auto start with windows";
-            this.autostart.UseVisualStyleBackColor = true;
-            // 
             // notifyIcon
             // 
             this.notifyIcon.ContextMenuStrip = this.menustrip;
             this.notifyIcon.Icon = ((System.Drawing.Icon)(resources.GetObject("notifyIcon.Icon")));
-            this.notifyIcon.Text = "notifyIcon";
-            this.notifyIcon.Visible = true;
+            this.notifyIcon.Text = "QR Code Creator";
+            this.notifyIcon.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.notifyIcon_MouseDoubleClick);
             // 
             // menustrip
             // 
@@ -126,19 +117,20 @@ namespace src.QR_GEN
             this.closeToolStripMenuItem});
             this.menustrip.Name = "menustrip";
             this.menustrip.Size = new System.Drawing.Size(102, 26);
+            this.menustrip.Opening += new System.ComponentModel.CancelEventHandler(this.menustrip_Opening);
             // 
             // closeToolStripMenuItem
             // 
             this.closeToolStripMenuItem.Name = "closeToolStripMenuItem";
             this.closeToolStripMenuItem.Size = new System.Drawing.Size(101, 22);
             this.closeToolStripMenuItem.Text = "close";
+            this.closeToolStripMenuItem.Click += new System.EventHandler(this.closeToolStripMenuItem_Click);
             // 
             // Window
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(414, 445);
-            this.Controls.Add(this.autostart);
             this.Controls.Add(this.append);
             this.Controls.Add(this.savebtn);
             this.Controls.Add(this.generatebtn);
@@ -155,7 +147,6 @@ namespace src.QR_GEN
             this.PerformLayout();
 
         }
-
         #endregion
 
         public System.Windows.Forms.RichTextBox textbox;
@@ -163,7 +154,6 @@ namespace src.QR_GEN
         private System.Windows.Forms.Button generatebtn;
         private System.Windows.Forms.Button savebtn;
         private System.Windows.Forms.CheckBox append;
-        private System.Windows.Forms.CheckBox autostart;
         private System.Windows.Forms.NotifyIcon notifyIcon;
         private System.Windows.Forms.ContextMenuStrip menustrip;
         private System.Windows.Forms.ToolStripMenuItem closeToolStripMenuItem;

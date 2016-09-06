@@ -1,12 +1,15 @@
-﻿using System;
+﻿using Microsoft.Win32;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.Drawing.Imaging;
 using System.IO;
 using System.Linq;
 using System.Reflection;
+using System.Security.Principal;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -15,7 +18,14 @@ namespace src.QR_GEN
 {
     public partial class Window : Form
     {
+
         public Window()
+        {
+            hookDLL();
+            InitializeComponent();
+        }
+
+        private void hookDLL()
         {
             AppDomain.CurrentDomain.AssemblyResolve += (sender, args) =>
             {
@@ -29,7 +39,6 @@ namespace src.QR_GEN
                     return Assembly.Load(assemblyData);
                 }
             };
-            InitializeComponent();
         }
 
         private void picture_Click(object sender, EventArgs e)
@@ -103,5 +112,41 @@ namespace src.QR_GEN
         {
 
         }
+
+        private void Form1_Close(object sender, FormClosingEventArgs e)
+        {
+            if(e.CloseReason == CloseReason.WindowsShutDown)
+            {
+                return;
+            }
+
+            if(e.CloseReason == CloseReason.UserClosing)
+            {
+                e.Cancel = true;
+                this.Visible = false;
+                notifyIcon.Visible = true;
+                notifyIcon.BalloonTipTitle = "QR Code Creator has been minimized";
+                notifyIcon.BalloonTipText = "in order to close it, right click this icon and click close.\n\nin order to start it just double click ;-)";
+                notifyIcon.ShowBalloonTip(400);
+            }
+
+        }
+
+        private void closeToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
+
+        private void menustrip_Opening(object sender, CancelEventArgs e)
+        {
+
+        }
+
+        private void notifyIcon_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+                this.Visible = true;
+                notifyIcon.Visible = false;
+        }
+
     }
 }
