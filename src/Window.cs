@@ -123,6 +123,7 @@ namespace src.QR_GEN
             if(e.CloseReason == CloseReason.UserClosing)
             {
                 picture.Image = null;
+                textbox.Clear();
                 e.Cancel = true;
                 this.Visible = false;
                 notifyIcon.Visible = true;
