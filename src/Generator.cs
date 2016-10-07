@@ -1,7 +1,11 @@
 ﻿using System.Drawing;
+using System.Drawing.Imaging;
+using System.IO;
+using System.Net.Http;
 using System.Windows.Forms;
 using ZXing;
 using ZXing.Common;
+using ZXing.QrCode;
 
 namespace src.QR_GEN
 {
@@ -27,6 +31,18 @@ namespace src.QR_GEN
 
             return writer.Write(text);
         }
+
+        public string readQR(Image image)
+        {
+            Bitmap img = new Bitmap(image);
+            BarcodeReader reader = new BarcodeReader();
+
+            Result result = reader.Decode(img);
+
+            return result.ToString().Trim();
+        }
+
+
 
         public void generate(Window window)
         {
