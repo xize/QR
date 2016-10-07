@@ -34,24 +34,15 @@ namespace src.QR_GEN
 
         public string readQR(Image image)
         {
-            Image img = new Bitmap(image, 52, 52);
-            QRCodeReader reader = new QRCodeReader();
-            BitMatrix matrix = new BitMatrix(img.Width+img.Height);
-            LuminanceSource lum = new RGBLuminanceSource(getBytesFromImage(img), 52, 52);
-            BinaryBitmap binary = new BinaryBitmap(new GlobalHistogramBinarizer(lum));
-            Result result = reader.decode(binary);
-            return result.Text;
+            Bitmap img = new Bitmap(image);
+            BarcodeReader reader = new BarcodeReader();
+
+            Result result = reader.Decode(img);
+
+            return result.ToString().Trim();
         }
 
-        private byte[] getBytesFromImage(Image img)
-        {
-            MemoryStream stream = new MemoryStream();
-            img.Save(stream, ImageFormat.Jpeg);
-            byte[] bytes = stream.GetBuffer();
-            stream.Flush();
-            stream.Close();
-            return bytes;
-        }
+
 
         public void generate(Window window)
         {

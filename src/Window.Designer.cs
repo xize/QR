@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Reflection;
+using System.Windows.Forms;
 
 namespace src.QR_GEN
 {
@@ -43,6 +44,7 @@ namespace src.QR_GEN
             this.notifyIcon = new System.Windows.Forms.NotifyIcon(this.components);
             this.menustrip = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.closeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.savefile = new System.Windows.Forms.SaveFileDialog();
             ((System.ComponentModel.ISupportInitialize)(this.picture)).BeginInit();
             this.menustrip.SuspendLayout();
             this.SuspendLayout();
@@ -97,6 +99,7 @@ namespace src.QR_GEN
             // 
             // openbtn
             // 
+            this.openbtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.openbtn.Location = new System.Drawing.Point(164, 412);
             this.openbtn.Name = "openbtn";
             this.openbtn.Size = new System.Drawing.Size(75, 23);
@@ -143,6 +146,10 @@ namespace src.QR_GEN
             this.closeToolStripMenuItem.Text = "close";
             this.closeToolStripMenuItem.Click += new System.EventHandler(this.closeToolStripMenuItem_Click);
             // 
+            // savefile
+            // 
+            this.savefile.FileOk += new System.ComponentModel.CancelEventHandler(this.savefile_FileOk);
+            // 
             // Window
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -157,7 +164,7 @@ namespace src.QR_GEN
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MinimumSize = new System.Drawing.Size(430, 484);
             this.Name = "Window";
-            this.Text = "QR Code Creator V1.2";
+            this.Text = String.Format("QR Code Creator v{0}", Application.ProductVersion);
             this.Load += new System.EventHandler(this.Window_Load);
             ((System.ComponentModel.ISupportInitialize)(this.picture)).EndInit();
             this.menustrip.ResumeLayout(false);
@@ -177,6 +184,7 @@ namespace src.QR_GEN
         private System.Windows.Forms.NotifyIcon notifyIcon;
         private System.Windows.Forms.ContextMenuStrip menustrip;
         private System.Windows.Forms.ToolStripMenuItem closeToolStripMenuItem;
+        private System.Windows.Forms.SaveFileDialog savefile;
     }
 }
 
