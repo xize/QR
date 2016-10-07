@@ -62,46 +62,53 @@ namespace src.QR_GEN
             
         }
 
+        private void savefile_FileOk(object sender, CancelEventArgs e)
+        {
+            //generate the image again for better useability.
+            Generator.getGenerator().generate(this);
+
+            if (append.Checked)
+            {
+                if (File.Exists(savefile.FileName))
+                {
+                    Image currentImage = Image.FromFile(savefile.FileName);
+                    Image img = picture.Image;
+
+                    int margin = 60;
+                    int width = currentImage.Width;
+                    int height = currentImage.Height + img.Height + margin;
+
+                    Image bitmap = new Bitmap(width, height);
+                    Graphics g = Graphics.FromImage(bitmap);
+
+                    g.Clear(Color.White);
+
+                    g.DrawImage(currentImage, new Point(0, 0));
+                    g.DrawImage(img, new Point(0, currentImage.Height + margin));
+
+                    currentImage.Dispose();
+
+                    bitmap.Save(savefile.FileName);
+                }
+                else
+                {
+                    Image img = picture.Image;
+                    img.Save(savefile.FileName);
+                }
+            }
+            else
+            {
+                Image img = picture.Image;
+                img.Save(savefile.FileName);
+            }
+        }
+
         private void savebtn_Click(object sender, EventArgs e)
         {
             if(textbox.Text.Length > 0)
             {
-
-                //generate the image again for better useability.
-                Generator.getGenerator().generate(this);
-
-                if (append.Checked)
-                {
-                    if(File.Exists("qr.jpg"))
-                    {
-                        Image currentImage = Image.FromFile("qr.jpg");
-                        Image img = picture.Image;
-
-                        int margin = 60;
-                        int width = currentImage.Width;
-                        int height = currentImage.Height + img.Height + margin;
-
-                        Image bitmap = new Bitmap(width, height);
-                        Graphics g = Graphics.FromImage(bitmap);
-
-                        g.Clear(Color.White);
-
-                        g.DrawImage(currentImage, new Point(0, 0));
-                        g.DrawImage(img, new Point(0, currentImage.Height + margin));
-
-                        currentImage.Dispose();
-
-                        bitmap.Save("qr.jpg");
-                    } else
-                    {
-                        Image img = picture.Image;
-                        img.Save("qr.jpg");
-                    }
-                } else
-                {
-                    Image img = picture.Image;
-                    img.Save("qr.jpg");
-                }
+                savefile.Filter = "JPEG image|*.jpg|GIF Image|*.gif|BMP image|*.bmp|PNG image|*.png|TIF image|*.tif";
+                savefile.ShowDialog();
             } else
             {
                 MessageBox.Show("please make sure you have something in the textbox !");
