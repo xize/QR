@@ -167,6 +167,7 @@ namespace src.QR_GEN
             this.Name = "Window";
             this.Text = String.Format("QR Code Creator v{0}", Application.ProductVersion);
             this.Load += new System.EventHandler(this.Window_Load);
+            this.FormClosing += Form1_Close;
             ((System.ComponentModel.ISupportInitialize)(this.picture)).EndInit();
             this.menustrip.ResumeLayout(false);
             this.ResumeLayout(false);
