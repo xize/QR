@@ -6,6 +6,7 @@ using System.Data;
 using System.Diagnostics;
 using System.Drawing;
 using System.Drawing.Imaging;
+using System.Drawing.Printing;
 using System.IO;
 using System.Linq;
 using System.Reflection;
@@ -23,6 +24,12 @@ namespace src.QR_GEN
         {
             hookDLL();
             InitializeComponent();
+            updateTitle();
+        }
+
+        private void updateTitle()
+        {
+            this.Text = String.Format("QR Code Creator v{0}", Application.ProductVersion);
         }
 
         private void hookDLL()
@@ -176,5 +183,59 @@ namespace src.QR_GEN
                 notifyIcon.Visible = false;
         }
 
+        private void passwdcheck_CheckedChanged(object sender, EventArgs e)
+        {
+            if(passwdcheck.Checked)
+            {
+                textbox.PasswordChar = '*';
+            } else
+            {
+                textbox.PasswordChar = '\0';
+            }
+        }
+
+        private void printbtn_Click(object sender, EventArgs e)
+        {
+            if(picture.Image == null)
+            {
+                MessageBox.Show("No image has been generated!");
+                return;
+            }
+            PrintDocument pd = new PrintDocument();
+            pd.PrintPage += printhandle;
+            pd.Print();
+        }
+
+        private void printhandle(object sender, PrintPageEventArgs e)
+        {
+            Image img = Generator.getGenerator().getAppendedImage();
+
+            if(img == null)
+            {
+                MessageBox.Show("Error: cannot print because the image is not appended!");
+                return;
+            }
+
+            Bitmap map = new Bitmap(img, img.Width/2, img.Height/2);
+
+            e.Graphics.DrawImage(map, new Point(0, 0));
+            map.Dispose();
+        }
+
+        private void append_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void qrhide_CheckedChanged(object sender, EventArgs e)
+        {
+            if(qrhide.Checked)
+            {
+                picture.Visible = false;
+            } else
+            {
+                picture.Visible = true;
+            }
+        }
     }
 }

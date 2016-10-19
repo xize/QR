@@ -16,6 +16,8 @@ namespace src.QR_GEN
 
         private Generator(){} /*do not instance it outside of this class*/
 
+        private Image appended_img;
+
         private Image generateQR(string text)
         {
             BarcodeWriter writer = new BarcodeWriter
@@ -47,10 +49,37 @@ namespace src.QR_GEN
         public void generate(Window window)
         {
             if (window.textbox.Text == "") { return; }
+
             Image QR = generateQR(window.textbox.Text);
-            //FileStream fs = File.Create("qr.jpg");
-            Clipboard.SetImage(QR);
+
+            if (window.append.Checked && window.picture.Image != null)
+            {
+                Image currentImage = appended_img;
+                Image img = window.picture.Image;
+
+                int margin = 60;
+                int width = currentImage.Width;
+                int height = currentImage.Height + img.Height + margin;
+
+                Image bitmap = new Bitmap(width, height);
+                Graphics g = Graphics.FromImage(bitmap);
+
+                g.Clear(Color.White);
+
+                g.DrawImage(currentImage, new Point(0, 0));
+                g.DrawImage(img, new Point(0, currentImage.Height + margin));
+
+                this.appended_img = bitmap;
+                currentImage.Dispose();
+            } else
+            {
+                this.appended_img = QR;
+            }
             window.picture.Image = QR;
+        }
+
+        public Image getAppendedImage() {
+            return this.appended_img;
         }
 
         public static Generator getGenerator()
