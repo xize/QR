@@ -49,7 +49,7 @@ namespace src.QR_GEN
             if (window.textbox.Text == "") { return; }
             Image QR = generateQR(window.textbox.Text);
             //FileStream fs = File.Create("qr.jpg");
-            Clipboard.SetImage(QR);
+            //Clipboard.SetImage(QR);
             window.picture.Image = QR;
         }
 
