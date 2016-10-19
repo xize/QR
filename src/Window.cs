@@ -124,7 +124,7 @@ namespace src.QR_GEN
 
         private void Window_Load(object sender, EventArgs e)
         {
-
+            this.FormClosing += Form1_Close;
         }
 
         private void Form1_Close(object sender, FormClosingEventArgs e)
