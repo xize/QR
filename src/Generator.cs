@@ -45,18 +45,37 @@ namespace src.QR_GEN
             return result.ToString().Trim();
         }
 
-
-
         public void generate(Window window)
         {
-            if (window.textbox.Text == "") { return; }
+            if(window.textbox.Text == "")
+            {
+                return;
+            }
 
+            //generate a new QR code by using the text.
             Image QR = generateQR(window.textbox.Text);
 
-            if (window.append.Checked)
+            if(window.qrhide.Checked && this.appended_img != null)
             {
-                Image currentImage = (window.qrhide.Checked ? new Bitmap(260,  260) : QR);
-                Image img = (window.qrhide.Checked ? new Bitmap(260, 260) : QR);
+                Image currentImage = this.appended_img;
+                    
+                int margin = 60;
+                int width = QR.Width;
+                int height = currentImage.Height+QR.Height+margin;
+
+                Image bitmap = new Bitmap(width, height);
+                Graphics g = Graphics.FromImage(bitmap);
+                g.Clear(Color.White);
+
+                g.DrawImage(currentImage, new Point(0,0));
+                g.DrawImage(QR, new Point(0, height));
+
+                this.appended_img = bitmap;
+                currentImage.Dispose();
+            } else if(window.append.Checked && window.picture.Image != null)
+            {
+                Image currentImage = appended_img;
+                Image img = window.picture.Image;
 
                 int margin = 60;
                 int width = currentImage.Width;
