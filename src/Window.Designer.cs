@@ -233,7 +233,7 @@ namespace src.QR_GEN
         private CheckBox passwdcheck;
         private Button printbtn;
         public CheckBox append;
-        private CheckBox qrhide;
+        public CheckBox qrhide;
     }
 }
 

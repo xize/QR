@@ -1,4 +1,5 @@
-﻿using System.Drawing;
+﻿using System;
+using System.Drawing;
 using System.Drawing.Imaging;
 using System.IO;
 using System.Net.Http;
@@ -52,10 +53,10 @@ namespace src.QR_GEN
 
             Image QR = generateQR(window.textbox.Text);
 
-            if (window.append.Checked && window.picture.Image != null)
+            if (window.append.Checked)
             {
-                Image currentImage = appended_img;
-                Image img = window.picture.Image;
+                Image currentImage = (window.qrhide.Checked ? new Bitmap(260,  260) : QR);
+                Image img = (window.qrhide.Checked ? new Bitmap(260, 260) : QR);
 
                 int margin = 60;
                 int width = currentImage.Width;
