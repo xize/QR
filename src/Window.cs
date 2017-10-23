@@ -200,7 +200,8 @@ namespace src.QR_GEN
                 MessageBox.Show("Error: cannot print because the image is not generated", "error");
                 return;
             }
-            Bitmap bit = new Bitmap(picture.Image, (picture.Image.Width/2), (picture.Image.Height/2));
+
+            Bitmap bit = new Bitmap(picture.Image, (comboBox1.SelectedIndex == 0 ? picture.Image.Width : picture.Image.Width / 2), (comboBox1.SelectedIndex == 0 ? picture.Image.Height : picture.Image.Height / 2));
             e.Graphics.DrawImage(bit, 0, 0);
             bit.Dispose();
         }
