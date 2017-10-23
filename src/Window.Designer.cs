@@ -107,6 +107,7 @@ namespace src.QR_GEN
             // openbtn
             // 
             this.openbtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.openbtn.Enabled = false;
             this.openbtn.Location = new System.Drawing.Point(164, 439);
             this.openbtn.Name = "openbtn";
             this.openbtn.Size = new System.Drawing.Size(75, 23);
