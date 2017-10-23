@@ -1,4 +1,6 @@
-﻿using System;
+﻿
+using src.QR_GEN.controls;
+using System;
 using System.ComponentModel;
 using System.Reflection;
 using System.Windows.Forms;
@@ -36,7 +38,7 @@ namespace src.QR_GEN
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Window));
             this.textbox = new System.Windows.Forms.TextBox();
-            this.picture = new System.Windows.Forms.PictureBox();
+            this.picture = new src.QR_GEN.controls.CustomPictureBox();
             this.generatebtn = new System.Windows.Forms.Button();
             this.savebtn = new System.Windows.Forms.Button();
             this.openbtn = new System.Windows.Forms.Button();
@@ -49,8 +51,13 @@ namespace src.QR_GEN
             this.passwdcheck = new System.Windows.Forms.CheckBox();
             this.printbtn = new System.Windows.Forms.Button();
             this.qrhide = new System.Windows.Forms.CheckBox();
+            this.button1 = new System.Windows.Forms.Button();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.panel1 = new System.Windows.Forms.Panel();
             ((System.ComponentModel.ISupportInitialize)(this.picture)).BeginInit();
             this.menustrip.SuspendLayout();
+            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // textbox
@@ -58,7 +65,7 @@ namespace src.QR_GEN
             this.textbox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.textbox.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.textbox.Location = new System.Drawing.Point(13, 381);
+            this.textbox.Location = new System.Drawing.Point(13, 353);
             this.textbox.Name = "textbox";
             this.textbox.PasswordChar = '*';
             this.textbox.Size = new System.Drawing.Size(389, 20);
@@ -67,13 +74,12 @@ namespace src.QR_GEN
             // 
             // picture
             // 
-            this.picture.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.picture.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.picture.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.picture.Location = new System.Drawing.Point(12, 12);
+            this.picture.Location = new System.Drawing.Point(77, 59);
+            this.picture.MaximumSize = new System.Drawing.Size(260, 260);
             this.picture.Name = "picture";
-            this.picture.Size = new System.Drawing.Size(389, 350);
+            this.picture.Size = new System.Drawing.Size(260, 260);
             this.picture.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
             this.picture.TabIndex = 1;
             this.picture.TabStop = false;
@@ -82,7 +88,7 @@ namespace src.QR_GEN
             // generatebtn
             // 
             this.generatebtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.generatebtn.Location = new System.Drawing.Point(326, 439);
+            this.generatebtn.Location = new System.Drawing.Point(326, 411);
             this.generatebtn.Name = "generatebtn";
             this.generatebtn.Size = new System.Drawing.Size(75, 23);
             this.generatebtn.TabIndex = 2;
@@ -93,7 +99,7 @@ namespace src.QR_GEN
             // savebtn
             // 
             this.savebtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.savebtn.Location = new System.Drawing.Point(245, 439);
+            this.savebtn.Location = new System.Drawing.Point(245, 411);
             this.savebtn.Name = "savebtn";
             this.savebtn.Size = new System.Drawing.Size(75, 23);
             this.savebtn.TabIndex = 3;
@@ -104,7 +110,8 @@ namespace src.QR_GEN
             // openbtn
             // 
             this.openbtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.openbtn.Location = new System.Drawing.Point(164, 439);
+            this.openbtn.Enabled = false;
+            this.openbtn.Location = new System.Drawing.Point(164, 411);
             this.openbtn.Name = "openbtn";
             this.openbtn.Size = new System.Drawing.Size(75, 23);
             this.openbtn.TabIndex = 4;
@@ -121,7 +128,7 @@ namespace src.QR_GEN
             // 
             this.append.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.append.AutoSize = true;
-            this.append.Location = new System.Drawing.Point(12, 409);
+            this.append.Location = new System.Drawing.Point(12, 381);
             this.append.Name = "append";
             this.append.Size = new System.Drawing.Size(88, 17);
             this.append.TabIndex = 4;
@@ -161,7 +168,7 @@ namespace src.QR_GEN
             this.passwdcheck.AutoSize = true;
             this.passwdcheck.Checked = true;
             this.passwdcheck.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.passwdcheck.Location = new System.Drawing.Point(12, 432);
+            this.passwdcheck.Location = new System.Drawing.Point(12, 404);
             this.passwdcheck.Name = "passwdcheck";
             this.passwdcheck.Size = new System.Drawing.Size(81, 17);
             this.passwdcheck.TabIndex = 5;
@@ -173,7 +180,7 @@ namespace src.QR_GEN
             // 
             this.printbtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.printbtn.BackColor = System.Drawing.SystemColors.Control;
-            this.printbtn.Location = new System.Drawing.Point(315, 21);
+            this.printbtn.Location = new System.Drawing.Point(327, 7);
             this.printbtn.Name = "printbtn";
             this.printbtn.Size = new System.Drawing.Size(75, 23);
             this.printbtn.TabIndex = 6;
@@ -185,7 +192,7 @@ namespace src.QR_GEN
             // 
             this.qrhide.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.qrhide.AutoSize = true;
-            this.qrhide.Location = new System.Drawing.Point(12, 453);
+            this.qrhide.Location = new System.Drawing.Point(12, 425);
             this.qrhide.Name = "qrhide";
             this.qrhide.Size = new System.Drawing.Size(65, 17);
             this.qrhide.TabIndex = 7;
@@ -193,27 +200,82 @@ namespace src.QR_GEN
             this.qrhide.UseVisualStyleBackColor = true;
             this.qrhide.CheckedChanged += new System.EventHandler(this.qrhide_CheckedChanged);
             // 
+            // button1
+            // 
+            this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.button1.BackColor = System.Drawing.SystemColors.Control;
+            this.button1.Location = new System.Drawing.Point(246, 7);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 8;
+            this.button1.Text = "Clear";
+            this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // comboBox1
+            // 
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Items.AddRange(new object[] {
+            "130*130",
+            "65*65"});
+            this.comboBox1.Location = new System.Drawing.Point(60, 7);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(70, 21);
+            this.comboBox1.TabIndex = 9;
+            this.comboBox1.Text = "130*130";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.BackColor = System.Drawing.Color.Black;
+            this.label1.ForeColor = System.Drawing.Color.White;
+            this.label1.Location = new System.Drawing.Point(3, 10);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(51, 13);
+            this.label1.TabIndex = 10;
+            this.label1.Text = "print size:";
+            // 
+            // panel1
+            // 
+            this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel1.AutoSize = true;
+            this.panel1.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.panel1.Controls.Add(this.button1);
+            this.panel1.Controls.Add(this.picture);
+            this.panel1.Controls.Add(this.label1);
+            this.panel1.Controls.Add(this.printbtn);
+            this.panel1.Controls.Add(this.comboBox1);
+            this.panel1.Location = new System.Drawing.Point(0, 0);
+            this.panel1.Name = "panel1";
+            this.panel1.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.panel1.Size = new System.Drawing.Size(414, 347);
+            this.panel1.TabIndex = 11;
+            // 
             // Window
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(414, 473);
+            this.ClientSize = new System.Drawing.Size(414, 445);
+            this.Controls.Add(this.panel1);
             this.Controls.Add(this.qrhide);
-            this.Controls.Add(this.printbtn);
             this.Controls.Add(this.passwdcheck);
             this.Controls.Add(this.openbtn);
             this.Controls.Add(this.append);
             this.Controls.Add(this.savebtn);
             this.Controls.Add(this.generatebtn);
-            this.Controls.Add(this.picture);
             this.Controls.Add(this.textbox);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MaximumSize = new System.Drawing.Size(430, 484);
             this.MinimumSize = new System.Drawing.Size(430, 484);
             this.Name = "Window";
             this.Text = "QR Code Creator v14.0.25420.1";
             this.Load += new System.EventHandler(this.Window_Load);
             ((System.ComponentModel.ISupportInitialize)(this.picture)).EndInit();
             this.menustrip.ResumeLayout(false);
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -221,7 +283,7 @@ namespace src.QR_GEN
         #endregion
 
         public System.Windows.Forms.TextBox textbox;
-        public System.Windows.Forms.PictureBox picture;
+        public CustomPictureBox picture;
         private System.Windows.Forms.Button generatebtn;
         private System.Windows.Forms.Button savebtn;
         private System.Windows.Forms.Button openbtn;
@@ -233,7 +295,11 @@ namespace src.QR_GEN
         private CheckBox passwdcheck;
         private Button printbtn;
         public CheckBox append;
-        private CheckBox qrhide;
+        public CheckBox qrhide;
+        private Button button1;
+        private ComboBox comboBox1;
+        private Label label1;
+        private Panel panel1;
     }
 }
 

@@ -57,7 +57,19 @@ namespace src.QR_GEN
         {
             if(textbox.Text.Length > 0)
             {
-                Generator.getGenerator().generate(this);
+                if(append.Checked)
+                {
+                    if(picture.Image == null)
+                    {
+                        picture.Image = Generator.GetGenerator().GenerateQR(textbox.Text);
+                    } else
+                    {
+                        picture.Image = Generator.GetGenerator().GenerateAppendedImage(textbox.Text, picture.Image);
+                    }
+                } else
+                {
+                    picture.Image = Generator.GetGenerator().GenerateQR(textbox.Text);
+                }
             } else
             {
                 MessageBox.Show("please make sure you have something in the textbox !");
@@ -72,41 +84,16 @@ namespace src.QR_GEN
         private void savefile_FileOk(object sender, CancelEventArgs e)
         {
             //generate the image again for better useability.
-            Generator.getGenerator().generate(this);
-
-            if (append.Checked)
+            bool disabled = false;
+            if (!picture.Enabled)
             {
-                if (File.Exists(savefile.FileName))
-                {
-                    Image currentImage = Image.FromFile(savefile.FileName);
-                    Image img = picture.Image;
-
-                    int margin = 60;
-                    int width = currentImage.Width;
-                    int height = currentImage.Height + img.Height + margin;
-
-                    Image bitmap = new Bitmap(width, height);
-                    Graphics g = Graphics.FromImage(bitmap);
-
-                    g.Clear(Color.White);
-
-                    g.DrawImage(currentImage, new Point(0, 0));
-                    g.DrawImage(img, new Point(0, currentImage.Height + margin));
-
-                    currentImage.Dispose();
-
-                    bitmap.Save(savefile.FileName);
-                }
-                else
-                {
-                    Image img = picture.Image;
-                    img.Save(savefile.FileName);
-                }
+                picture.Enabled = true;
+                disabled = !disabled;
             }
-            else
+            picture.Image.Save(savefile.FileName);
+            if(disabled)
             {
-                Image img = picture.Image;
-                img.Save(savefile.FileName);
+                picture.Enabled = false;
             }
         }
 
@@ -154,7 +141,7 @@ namespace src.QR_GEN
             {
                 Stream stream = dialog.OpenFile();
                 Image img = Image.FromStream(stream);
-                string text = Generator.getGenerator().readQR(img);
+                string text = Generator.GetGenerator().ReadQR(img);
                 picture.Image = img;
                 textbox.Text = text;
             } else
@@ -208,18 +195,15 @@ namespace src.QR_GEN
 
         private void printhandle(object sender, PrintPageEventArgs e)
         {
-            Image img = Generator.getGenerator().getAppendedImage();
-
-            if(img == null)
+            if(picture.Image == null)
             {
-                MessageBox.Show("Error: cannot print because the image is not appended!");
+                MessageBox.Show("Error: cannot print because the image is not generated", "error");
                 return;
             }
 
-            Bitmap map = new Bitmap(img, img.Width/2, img.Height/2);
-
-            e.Graphics.DrawImage(map, new Point(0, 0));
-            map.Dispose();
+            Bitmap bit = new Bitmap(picture.Image, (comboBox1.SelectedIndex == 0 ? picture.Image.Width/2 : (picture.Image.Width /2)/2), (comboBox1.SelectedIndex == 0 ? picture.Image.Height/2 : (picture.Image.Height / 2)/2));
+            e.Graphics.DrawImage(bit, 0, 0);
+            bit.Dispose();
         }
 
         private void append_CheckedChanged(object sender, EventArgs e)
@@ -236,6 +220,11 @@ namespace src.QR_GEN
             {
                 picture.Visible = true;
             }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            picture.Image = null;
         }
     }
 }
