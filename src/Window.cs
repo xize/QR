@@ -200,42 +200,9 @@ namespace src.QR_GEN
                 MessageBox.Show("Error: cannot print because the image is not generated", "error");
                 return;
             }
-            Bitmap bit = new Bitmap(picture.Image, picture.Image.Width/2, picture.Image.Height/2);
+            Bitmap bit = new Bitmap(picture.Image, (picture.Image.Width/2)/2, (picture.Image.Height/2)/2);
             e.Graphics.DrawImage(bit, 0, 0);
             bit.Dispose();
-
-            /*
-            if(append.Checked)
-            {
-
-                Image img = Generator.GetGenerator().GetAppendedImage();
-
-                if (img == null)
-                {
-                    MessageBox.Show("Error: cannot print because the image is not appended!");
-                    return;
-                }
-
-                Bitmap map = new Bitmap(img);
-
-                e.Graphics.DrawImage(map, new Point(0, 0));
-                map.Dispose();
-            } else
-            {
-                Image img = picture.Image;
-
-                if (img == null)
-                {
-                    MessageBox.Show("Error: cannot print because the image is not appended!");
-                    return;
-                }
-
-                Bitmap map = new Bitmap(img, img.Width / 2, img.Height / 2);
-
-                e.Graphics.DrawImage(map, new Point(0, 0));
-                map.Dispose();
-            }
-            */
         }
 
         private void append_CheckedChanged(object sender, EventArgs e)
