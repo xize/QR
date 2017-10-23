@@ -212,13 +212,13 @@ namespace src.QR_GEN
             // 
             this.comboBox1.FormattingEnabled = true;
             this.comboBox1.Items.AddRange(new object[] {
-            "260*260",
-            "130*130"});
+            "130*130",
+            "65*65"});
             this.comboBox1.Location = new System.Drawing.Point(76, 20);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(70, 21);
             this.comboBox1.TabIndex = 9;
-            this.comboBox1.Text = "260*260";
+            this.comboBox1.Text = "130*130";
             // 
             // label1
             // 
