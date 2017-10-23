@@ -129,7 +129,7 @@ namespace src.QR_GEN
                 this.Visible = false;
                 notifyIcon.Visible = true;
                 notifyIcon.BalloonTipTitle = "QR Code Creator has been minimized";
-                notifyIcon.BalloonTipText = "in order to close it, right click this icon and click close.\n\nin order to start it just double click ;-)";
+                notifyIcon.BalloonTipText = "in order to close it, right click this icon and click close.\n\nin order to start it just left click ;-)";
                 notifyIcon.ShowBalloonTip(400);
             }
 
@@ -164,10 +164,10 @@ namespace src.QR_GEN
 
         }
 
-        private void notifyIcon_MouseDoubleClick(object sender, MouseEventArgs e)
+        private void notifyIcon_MouseClick(object sender, MouseEventArgs e)
         {
-                this.Visible = true;
-                notifyIcon.Visible = false;
+            this.Visible = true;
+            notifyIcon.Visible = false;
         }
 
         private void passwdcheck_CheckedChanged(object sender, EventArgs e)
@@ -225,6 +225,11 @@ namespace src.QR_GEN
         private void button1_Click(object sender, EventArgs e)
         {
             picture.Image = null;
+        }
+
+        private void notifyIcon_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+
         }
     }
 }
