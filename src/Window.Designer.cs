@@ -49,6 +49,7 @@ namespace src.QR_GEN
             this.passwdcheck = new System.Windows.Forms.CheckBox();
             this.printbtn = new System.Windows.Forms.Button();
             this.qrhide = new System.Windows.Forms.CheckBox();
+            this.button1 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.picture)).BeginInit();
             this.menustrip.SuspendLayout();
             this.SuspendLayout();
@@ -193,11 +194,24 @@ namespace src.QR_GEN
             this.qrhide.UseVisualStyleBackColor = true;
             this.qrhide.CheckedChanged += new System.EventHandler(this.qrhide_CheckedChanged);
             // 
+            // button1
+            // 
+            this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.button1.BackColor = System.Drawing.SystemColors.Control;
+            this.button1.Location = new System.Drawing.Point(234, 21);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 8;
+            this.button1.Text = "Clear";
+            this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // Window
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(414, 473);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.qrhide);
             this.Controls.Add(this.printbtn);
             this.Controls.Add(this.passwdcheck);
@@ -234,6 +248,7 @@ namespace src.QR_GEN
         private Button printbtn;
         public CheckBox append;
         public CheckBox qrhide;
+        private Button button1;
     }
 }
 

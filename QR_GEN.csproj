@@ -72,13 +72,13 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="src\Generator.cs" />
     <Compile Include="src\Window.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="src\Window.Designer.cs">
       <DependentUpon>Window.cs</DependentUpon>
     </Compile>
-    <Compile Include="src\Generator.cs" />
     <Compile Include="src\Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="src\Window.resx">
