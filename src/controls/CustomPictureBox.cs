@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace src.QR_GEN.controls
+namespace QR_GEN.src.controls
 {
     public class CustomPictureBox : PictureBox
     {

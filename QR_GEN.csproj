@@ -48,7 +48,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <StartupObject>src.QR_GEN.Program</StartupObject>
+    <StartupObject>QR_GEN.src.Program</StartupObject>
   </PropertyGroup>
   <PropertyGroup>
     <ApplicationIcon>src\qr.ico</ApplicationIcon>
@@ -76,6 +76,12 @@
     <Compile Include="src\controls\CustomPictureBox.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="src\controls\QRDisplay.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="src\controls\QRDisplay.Designer.cs">
+      <DependentUpon>QRDisplay.cs</DependentUpon>
+    </Compile>
     <Compile Include="src\Generator.cs" />
     <Compile Include="src\Window.cs">
       <SubType>Form</SubType>
@@ -85,6 +91,9 @@
     </Compile>
     <Compile Include="src\Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="src\controls\QRDisplay.resx">
+      <DependentUpon>QRDisplay.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="src\Window.resx">
       <DependentUpon>Window.cs</DependentUpon>
     </EmbeddedResource>

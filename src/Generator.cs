@@ -6,7 +6,7 @@ using System.Drawing.Imaging;
 using System.IO;
 using System.Net.Http;
 using System.Windows.Forms;
-namespace src.QR_GEN
+namespace QR_GEN.src
 {
     class Generator
     {

@@ -5,7 +5,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace src.QR_GEN
+namespace QR_GEN.src
 {
     static class Program
     {

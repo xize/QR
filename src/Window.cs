@@ -15,7 +15,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace src.QR_GEN
+namespace QR_GEN.src
 {
     public partial class Window : Form
     {

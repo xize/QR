@@ -1,11 +1,11 @@
 ﻿
-using src.QR_GEN.controls;
+using QR_GEN.src.controls;
 using System;
 using System.ComponentModel;
 using System.Reflection;
 using System.Windows.Forms;
 
-namespace src.QR_GEN
+namespace QR_GEN.src
 {
     partial class Window
     {
@@ -38,7 +38,7 @@ namespace src.QR_GEN
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Window));
             this.textbox = new System.Windows.Forms.TextBox();
-            this.picture = new src.QR_GEN.controls.CustomPictureBox();
+            this.picture = new QR_GEN.src.controls.CustomPictureBox();
             this.generatebtn = new System.Windows.Forms.Button();
             this.savebtn = new System.Windows.Forms.Button();
             this.openbtn = new System.Windows.Forms.Button();
