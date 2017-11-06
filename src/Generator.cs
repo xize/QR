@@ -23,6 +23,13 @@ namespace QR_GEN.src
             return new Bitmap(code.GetGraphic(20), 260, 260);
         }
 
+        public string GenerateAsciiQR(string text)
+        {
+            QRCodeGenerator gen = new QRCodeGenerator();
+            QRCodeData data = gen.CreateQrCode(text, QRCodeGenerator.ECCLevel.Q);
+            AsciiQRCode ascii = new AsciiQRCode(data);
+        }
+
         public Image GenerateAppendedImage(string text, Image orginal)
         {
 
