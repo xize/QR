@@ -59,7 +59,7 @@ namespace QR_GEN.src
         {
             if(textbox.Text.Length > 0)
             {
-                if (asciicheckbox.Enabled)
+                if (asciicheckbox.Checked)
                 {
                     if (this.append.Checked)
                     {
