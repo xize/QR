@@ -28,6 +28,7 @@ namespace QR_GEN.src
             QRCodeGenerator gen = new QRCodeGenerator();
             QRCodeData data = gen.CreateQrCode(text, QRCodeGenerator.ECCLevel.Q);
             AsciiQRCode ascii = new AsciiQRCode(data);
+            return ascii.GetGraphic(1);
         }
 
         public Image GenerateAppendedImage(string text, Image orginal)

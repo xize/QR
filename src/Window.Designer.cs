@@ -55,7 +55,7 @@ namespace QR_GEN.src
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.checkBox1 = new System.Windows.Forms.CheckBox();
+            this.asciicheckbox = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.picture)).BeginInit();
             this.menustrip.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -252,26 +252,27 @@ namespace QR_GEN.src
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
             this.panel1.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.panel1.Size = new System.Drawing.Size(414, 347);
+            this.panel1.Size = new System.Drawing.Size(466, 347);
             this.panel1.TabIndex = 11;
             // 
-            // checkBox1
+            // asciicheckbox
             // 
-            this.checkBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.checkBox1.AutoSize = true;
-            this.checkBox1.Location = new System.Drawing.Point(106, 381);
-            this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(67, 17);
-            this.checkBox1.TabIndex = 12;
-            this.checkBox1.Text = "ascii text";
-            this.checkBox1.UseVisualStyleBackColor = true;
+            this.asciicheckbox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.asciicheckbox.AutoSize = true;
+            this.asciicheckbox.Location = new System.Drawing.Point(106, 381);
+            this.asciicheckbox.Name = "asciicheckbox";
+            this.asciicheckbox.Size = new System.Drawing.Size(67, 17);
+            this.asciicheckbox.TabIndex = 12;
+            this.asciicheckbox.Text = "ascii text";
+            this.asciicheckbox.UseVisualStyleBackColor = true;
+            this.asciicheckbox.CheckedChanged += new System.EventHandler(this.asciicheckbox_CheckedChanged);
             // 
             // Window
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(414, 445);
-            this.Controls.Add(this.checkBox1);
+            this.Controls.Add(this.asciicheckbox);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.qrhide);
             this.Controls.Add(this.passwdcheck);
@@ -314,7 +315,7 @@ namespace QR_GEN.src
         private ComboBox comboBox1;
         private Label label1;
         private Panel panel1;
-        public CheckBox checkBox1;
+        public CheckBox asciicheckbox;
     }
 }
 

@@ -20,6 +20,8 @@ namespace QR_GEN.src
     public partial class Window : Form
     {
 
+        private AsciiWindow asciiwindow = new AsciiWindow();
+
         public Window()
         {
             hookDLL();
@@ -57,18 +59,47 @@ namespace QR_GEN.src
         {
             if(textbox.Text.Length > 0)
             {
-                if(append.Checked)
+                if (asciicheckbox.Enabled)
                 {
-                    if(picture.Image == null)
+                    if (this.append.Checked)
+                    {
+                        if(asciiwindow.QRcode.Length > 0)
+                        {
+                            string currentqr = asciiwindow.QRcode;
+                            string QR = Generator.GetGenerator().GenerateAsciiQR(textbox.Text);
+                            asciiwindow.QRcode = currentqr+"\n\n\n\n\n"+QR;
+                        } else
+                        {
+                            asciiwindow.QRcode = null;
+                            string QR = Generator.GetGenerator().GenerateAsciiQR(textbox.Text);
+                            asciiwindow.QRcode = QR;
+                        }
+                    }
+                    else
+                    {
+                        asciiwindow.QRcode = null;
+                        string QR = Generator.GetGenerator().GenerateAsciiQR(textbox.Text);
+                        asciiwindow.QRcode = QR;
+                    }
+                    asciiwindow.ShowDialog();
+                }
+                else
+                {
+                    if (append.Checked)
+                    {
+                        if (picture.Image == null)
+                        {
+                            picture.Image = Generator.GetGenerator().GenerateQR(textbox.Text);
+                        }
+                        else
+                        {
+                            picture.Image = Generator.GetGenerator().GenerateAppendedImage(textbox.Text, picture.Image);
+                        }
+                    }
+                    else
                     {
                         picture.Image = Generator.GetGenerator().GenerateQR(textbox.Text);
-                    } else
-                    {
-                        picture.Image = Generator.GetGenerator().GenerateAppendedImage(textbox.Text, picture.Image);
                     }
-                } else
-                {
-                    picture.Image = Generator.GetGenerator().GenerateQR(textbox.Text);
                 }
             } else
             {
@@ -228,6 +259,11 @@ namespace QR_GEN.src
         }
 
         private void notifyIcon_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+
+        }
+
+        private void asciicheckbox_CheckedChanged(object sender, EventArgs e)
         {
 
         }
