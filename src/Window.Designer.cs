@@ -57,10 +57,10 @@ namespace QR_GEN.src
             this.panel1 = new System.Windows.Forms.Panel();
             this.asciicheckbox = new System.Windows.Forms.CheckBox();
             this.googleauthcheckbox = new System.Windows.Forms.CheckBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
+            this.googleuserbox = new System.Windows.Forms.TextBox();
+            this.googlewebsitetext = new System.Windows.Forms.TextBox();
+            this.googleuserlabel = new System.Windows.Forms.Label();
+            this.googlewebsitelabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.picture)).BeginInit();
             this.menustrip.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -282,48 +282,53 @@ namespace QR_GEN.src
             this.googleauthcheckbox.TabIndex = 13;
             this.googleauthcheckbox.Text = "google authenticator";
             this.googleauthcheckbox.UseVisualStyleBackColor = true;
+            this.googleauthcheckbox.CheckedChanged += new System.EventHandler(this.googleauthcheckbox_CheckedChanged_1);
             // 
-            // textBox1
+            // googleuserbox
             // 
-            this.textBox1.Location = new System.Drawing.Point(140, 418);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(100, 20);
-            this.textBox1.TabIndex = 14;
+            this.googleuserbox.Enabled = false;
+            this.googleuserbox.Location = new System.Drawing.Point(140, 418);
+            this.googleuserbox.Name = "googleuserbox";
+            this.googleuserbox.Size = new System.Drawing.Size(100, 20);
+            this.googleuserbox.TabIndex = 14;
             // 
-            // textBox2
+            // googlewebsitetext
             // 
-            this.textBox2.Location = new System.Drawing.Point(298, 418);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(100, 20);
-            this.textBox2.TabIndex = 15;
+            this.googlewebsitetext.Enabled = false;
+            this.googlewebsitetext.Location = new System.Drawing.Point(298, 418);
+            this.googlewebsitetext.Name = "googlewebsitetext";
+            this.googlewebsitetext.Size = new System.Drawing.Size(100, 20);
+            this.googlewebsitetext.TabIndex = 15;
             // 
-            // label2
+            // googleuserlabel
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(104, 421);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(30, 13);
-            this.label2.TabIndex = 16;
-            this.label2.Text = "user:";
+            this.googleuserlabel.AutoSize = true;
+            this.googleuserlabel.Enabled = false;
+            this.googleuserlabel.Location = new System.Drawing.Point(104, 421);
+            this.googleuserlabel.Name = "googleuserlabel";
+            this.googleuserlabel.Size = new System.Drawing.Size(30, 13);
+            this.googleuserlabel.TabIndex = 16;
+            this.googleuserlabel.Text = "user:";
             // 
-            // label3
+            // googlewebsitelabel
             // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(246, 420);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(46, 13);
-            this.label3.TabIndex = 17;
-            this.label3.Text = "website:";
+            this.googlewebsitelabel.AutoSize = true;
+            this.googlewebsitelabel.Enabled = false;
+            this.googlewebsitelabel.Location = new System.Drawing.Point(246, 420);
+            this.googlewebsitelabel.Name = "googlewebsitelabel";
+            this.googlewebsitelabel.Size = new System.Drawing.Size(46, 13);
+            this.googlewebsitelabel.TabIndex = 17;
+            this.googlewebsitelabel.Text = "website:";
             // 
             // Window
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(414, 474);
-            this.Controls.Add(this.label3);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.textBox2);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.googlewebsitelabel);
+            this.Controls.Add(this.googleuserlabel);
+            this.Controls.Add(this.googlewebsitetext);
+            this.Controls.Add(this.googleuserbox);
             this.Controls.Add(this.googleauthcheckbox);
             this.Controls.Add(this.asciicheckbox);
             this.Controls.Add(this.panel1);
@@ -370,10 +375,10 @@ namespace QR_GEN.src
         private Panel panel1;
         public CheckBox asciicheckbox;
         public CheckBox googleauthcheckbox;
-        private TextBox textBox1;
-        private TextBox textBox2;
-        private Label label2;
-        private Label label3;
+        private TextBox googleuserbox;
+        private TextBox googlewebsitetext;
+        private Label googleuserlabel;
+        private Label googlewebsitelabel;
     }
 }
 
