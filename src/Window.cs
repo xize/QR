@@ -12,13 +12,16 @@ using System.Linq;
 using System.Reflection;
 using System.Security.Principal;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace src.QR_GEN
+namespace QR_GEN.src
 {
     public partial class Window : Form
     {
+
+        private AsciiWindow asciiwindow = new AsciiWindow();
 
         public Window()
         {
@@ -57,18 +60,87 @@ namespace src.QR_GEN
         {
             if(textbox.Text.Length > 0)
             {
-                if(append.Checked)
+
+                if(googleauthcheckbox.Checked)
                 {
-                    if(picture.Image == null)
+                    string text = textbox.Text;
+                    textbox.Clear();
+
+                    //first check if it is already a OTP...
+                    if (text.StartsWith("otpauth://"))
+                    {
+                        //when this is true we should update the textbox with the stripped secret again.
+                        
+                        int start = text.IndexOf('=')+1;
+                        string leftside = text.Substring(start);
+                        string rightside = leftside.Substring(0, leftside.IndexOf('&'));
+                        textbox.Text = rightside;
+                        text = rightside;
+                    }
+
+                    //first verify if the secret is actually OTP standard.
+                    string secret = text;
+
+                    
+                    if(!OTP.GetOTP().Verify(secret))
+                    {
+                        MessageBox.Show("invalid OTP secret given in!");
+                        return;
+                    }
+                    
+                    string account = textBox1.Text;
+                    string domain = textBox2.Text;
+
+                    //strip domain url ;-)
+                    string issuer = domain.Substring(0, domain.LastIndexOf('.')).Replace("https://", "").Replace("http://", "").Replace("www.", "");
+                
+                    string google = "otpauth://totp/" + issuer + ":" + account + "?secret=" + text + "&issuer=" + issuer;
+
+                    //convert password into compatible format for google authenticator
+                    textbox.Text = google;
+                }
+
+                if (asciicheckbox.Checked)
+                {
+                    if (this.append.Checked)
+                    {
+                        if(asciiwindow.QRcode.Length > 0)
+                        {
+                            string currentqr = asciiwindow.QRcode;
+                            string QR = Generator.GetGenerator().GenerateAsciiQR(textbox.Text);
+                            asciiwindow.QRcode = currentqr+"\n\n\n\n\n"+QR;
+                        } else
+                        {
+                            asciiwindow.QRcode = null;
+                            string QR = Generator.GetGenerator().GenerateAsciiQR(textbox.Text);
+                            asciiwindow.QRcode = QR;
+                        }
+                    }
+                    else
+                    {
+                        asciiwindow.QRcode = null;
+                        string QR = Generator.GetGenerator().GenerateAsciiQR(textbox.Text);
+                        asciiwindow.QRcode = QR;
+                    }
+                    asciiwindow.ShowDialog();
+                }
+                else
+                {
+                    if (append.Checked)
+                    {
+                        if (picture.Image == null)
+                        {
+                            picture.Image = Generator.GetGenerator().GenerateQR(textbox.Text);
+                        }
+                        else
+                        {
+                            picture.Image = Generator.GetGenerator().GenerateAppendedImage(textbox.Text, picture.Image);
+                        }
+                    }
+                    else
                     {
                         picture.Image = Generator.GetGenerator().GenerateQR(textbox.Text);
-                    } else
-                    {
-                        picture.Image = Generator.GetGenerator().GenerateAppendedImage(textbox.Text, picture.Image);
                     }
-                } else
-                {
-                    picture.Image = Generator.GetGenerator().GenerateQR(textbox.Text);
                 }
             } else
             {
@@ -129,7 +201,7 @@ namespace src.QR_GEN
                 this.Visible = false;
                 notifyIcon.Visible = true;
                 notifyIcon.BalloonTipTitle = "QR Code Creator has been minimized";
-                notifyIcon.BalloonTipText = "in order to close it, right click this icon and click close.\n\nin order to start it just double click ;-)";
+                notifyIcon.BalloonTipText = "in order to close it, right click this icon and click close.\n\nin order to start it just left click ;-)";
                 notifyIcon.ShowBalloonTip(400);
             }
 
@@ -164,10 +236,10 @@ namespace src.QR_GEN
 
         }
 
-        private void notifyIcon_MouseDoubleClick(object sender, MouseEventArgs e)
+        private void notifyIcon_MouseClick(object sender, MouseEventArgs e)
         {
-                this.Visible = true;
-                notifyIcon.Visible = false;
+            this.Visible = true;
+            notifyIcon.Visible = false;
         }
 
         private void passwdcheck_CheckedChanged(object sender, EventArgs e)
@@ -225,6 +297,21 @@ namespace src.QR_GEN
         private void button1_Click(object sender, EventArgs e)
         {
             picture.Image = null;
+        }
+
+        private void notifyIcon_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+
+        }
+
+        private void asciicheckbox_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void googleauthcheckbox_CheckedChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

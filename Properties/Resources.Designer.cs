@@ -59,15 +59,5 @@ namespace QR_GEN.Properties {
                 resourceCulture = value;
             }
         }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Byte[].
-        /// </summary>
-        internal static byte[] zxing {
-            get {
-                object obj = ResourceManager.GetObject("zxing", resourceCulture);
-                return ((byte[])(obj));
-            }
-        }
     }
 }

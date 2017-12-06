@@ -1,15 +1,12 @@
-﻿using System;
+﻿using QRCoder;
+using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Drawing.Imaging;
 using System.IO;
 using System.Net.Http;
 using System.Windows.Forms;
-using ZXing;
-using ZXing.Common;
-using ZXing.QrCode;
-
-namespace src.QR_GEN
+namespace QR_GEN.src
 {
     class Generator
     {
@@ -20,18 +17,18 @@ namespace src.QR_GEN
 
         public Image GenerateQR(string text)
         {
-            BarcodeWriter writer = new BarcodeWriter
-            {
-                Format = BarcodeFormat.QR_CODE,
-                Options = new EncodingOptions
-                {
-                    Height = 260,
-                    Width = 260,
-                    Margin = 0
-                }
-            };
+            QRCodeGenerator gen = new QRCodeGenerator();
+            QRCodeData data = gen.CreateQrCode(text, QRCodeGenerator.ECCLevel.Q);
+            QRCode code = new QRCode(data);
+            return new Bitmap(code.GetGraphic(20), 260, 260);
+        }
 
-            return writer.Write(text);
+        public string GenerateAsciiQR(string text)
+        {
+            QRCodeGenerator gen = new QRCodeGenerator();
+            QRCodeData data = gen.CreateQrCode(text, QRCodeGenerator.ECCLevel.Q);
+            AsciiQRCode ascii = new AsciiQRCode(data);
+            return ascii.GetGraphic(1);
         }
 
         public Image GenerateAppendedImage(string text, Image orginal)
@@ -53,14 +50,8 @@ namespace src.QR_GEN
 
         [Obsolete]
         public string ReadQR(Image image)
-        {
-            //TODO: check if we want to implement this.
-            Bitmap img = new Bitmap(image);
-            BarcodeReader reader = new BarcodeReader();
-
-            Result result = reader.Decode(img);
-
-            return result.ToString().Trim();
+        {       
+            return null;
         }
 
         public static Generator GetGenerator()
