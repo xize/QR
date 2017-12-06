@@ -88,8 +88,23 @@ namespace QR_GEN.src
                         return;
                     }
                     
-                    string account = textBox1.Text;
-                    string domain = textBox2.Text;
+                    string account = googleuserbox.Text;
+                    string domain = googlewebsitetext.Text;
+
+                    //verify if valid domain...
+                    if(domain.Contains("."))
+                    {
+                        int i = domain.LastIndexOf('.');
+                        if(domain.Substring(i).Length < 1)
+                        {
+                            MessageBox.Show("when you type your website make sure it ends like \".domain\"!", "error");
+                            return;
+                        }
+                    } else
+                    {
+                        MessageBox.Show("when you type your website make sure it ends like \".domain\"!", "error");
+                        return;
+                    }
 
                     //strip domain url ;-)
                     string issuer = domain.Substring(0, domain.LastIndexOf('.')).Replace("https://", "").Replace("http://", "").Replace("www.", "");
@@ -312,6 +327,24 @@ namespace QR_GEN.src
         private void googleauthcheckbox_CheckedChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void googleauthcheckbox_CheckedChanged_1(object sender, EventArgs e)
+        {
+            textbox.Clear();
+            if(googleauthcheckbox.Checked)
+            {
+                googleuserlabel.Enabled = true;
+                googleuserbox.Enabled = true;
+                googlewebsitelabel.Enabled = true;
+                googlewebsitetext.Enabled = true;
+            } else
+            {
+                googleuserlabel.Enabled = false;
+                googleuserbox.Enabled = false;
+                googlewebsitelabel.Enabled = false;
+                googlewebsitetext.Enabled = false;
+            }
         }
     }
 }
