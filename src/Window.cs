@@ -253,8 +253,12 @@ namespace QR_GEN.src
 
         private void notifyIcon_MouseClick(object sender, MouseEventArgs e)
         {
-            this.Visible = true;
-            notifyIcon.Visible = false;
+
+            if(e.Button == MouseButtons.Left)
+            {
+                this.Visible = true;
+                notifyIcon.Visible = false;
+            }
         }
 
         private void passwdcheck_CheckedChanged(object sender, EventArgs e)
@@ -312,11 +316,6 @@ namespace QR_GEN.src
         private void button1_Click(object sender, EventArgs e)
         {
             picture.Image = null;
-        }
-
-        private void notifyIcon_MouseDoubleClick(object sender, MouseEventArgs e)
-        {
-
         }
 
         private void asciicheckbox_CheckedChanged(object sender, EventArgs e)
