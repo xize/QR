@@ -12,6 +12,7 @@ using System.Linq;
 using System.Reflection;
 using System.Security.Principal;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -59,6 +60,46 @@ namespace QR_GEN.src
         {
             if(textbox.Text.Length > 0)
             {
+
+                if(googleauthcheckbox.Checked)
+                {
+                    string text = textbox.Text;
+                    textbox.Clear();
+
+                    //first check if it is already a OTP...
+                    if (text.StartsWith("otpauth://"))
+                    {
+                        //when this is true we should update the textbox with the stripped secret again.
+                        
+                        int start = text.IndexOf('=')+1;
+                        string leftside = text.Substring(start);
+                        string rightside = leftside.Substring(0, leftside.IndexOf('&'));
+                        textbox.Text = rightside;
+                        text = rightside;
+                    }
+
+                    //first verify if the secret is actually OTP standard.
+                    string secret = text;
+
+                    
+                    if(!OTP.GetOTP().Verify(secret))
+                    {
+                        MessageBox.Show("invalid OTP secret given in!");
+                        return;
+                    }
+                    
+                    string account = textBox1.Text;
+                    string domain = textBox2.Text;
+
+                    //strip domain url ;-)
+                    string issuer = domain.Substring(0, domain.LastIndexOf('.')).Replace("https://", "").Replace("http://", "").Replace("www.", "");
+                
+                    string google = "otpauth://totp/" + issuer + ":" + account + "?secret=" + text + "&issuer=" + issuer;
+
+                    //convert password into compatible format for google authenticator
+                    textbox.Text = google;
+                }
+
                 if (asciicheckbox.Checked)
                 {
                     if (this.append.Checked)
@@ -264,6 +305,11 @@ namespace QR_GEN.src
         }
 
         private void asciicheckbox_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void googleauthcheckbox_CheckedChanged(object sender, EventArgs e)
         {
 
         }

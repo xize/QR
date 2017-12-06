@@ -56,6 +56,11 @@ namespace QR_GEN.src
             this.label1 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.asciicheckbox = new System.Windows.Forms.CheckBox();
+            this.googleauthcheckbox = new System.Windows.Forms.CheckBox();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.picture)).BeginInit();
             this.menustrip.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -66,7 +71,7 @@ namespace QR_GEN.src
             this.textbox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.textbox.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.textbox.Location = new System.Drawing.Point(13, 353);
+            this.textbox.Location = new System.Drawing.Point(12, 350);
             this.textbox.Name = "textbox";
             this.textbox.PasswordChar = '*';
             this.textbox.Size = new System.Drawing.Size(389, 20);
@@ -77,7 +82,7 @@ namespace QR_GEN.src
             // 
             this.picture.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.picture.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.picture.Location = new System.Drawing.Point(77, 59);
+            this.picture.Location = new System.Drawing.Point(77, 58);
             this.picture.MaximumSize = new System.Drawing.Size(260, 260);
             this.picture.Name = "picture";
             this.picture.Size = new System.Drawing.Size(260, 260);
@@ -89,7 +94,7 @@ namespace QR_GEN.src
             // generatebtn
             // 
             this.generatebtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.generatebtn.Location = new System.Drawing.Point(326, 411);
+            this.generatebtn.Location = new System.Drawing.Point(327, 444);
             this.generatebtn.Name = "generatebtn";
             this.generatebtn.Size = new System.Drawing.Size(75, 23);
             this.generatebtn.TabIndex = 2;
@@ -100,7 +105,7 @@ namespace QR_GEN.src
             // savebtn
             // 
             this.savebtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.savebtn.Location = new System.Drawing.Point(245, 411);
+            this.savebtn.Location = new System.Drawing.Point(246, 444);
             this.savebtn.Name = "savebtn";
             this.savebtn.Size = new System.Drawing.Size(75, 23);
             this.savebtn.TabIndex = 3;
@@ -112,7 +117,7 @@ namespace QR_GEN.src
             // 
             this.openbtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.openbtn.Enabled = false;
-            this.openbtn.Location = new System.Drawing.Point(164, 411);
+            this.openbtn.Location = new System.Drawing.Point(165, 444);
             this.openbtn.Name = "openbtn";
             this.openbtn.Size = new System.Drawing.Size(75, 23);
             this.openbtn.TabIndex = 4;
@@ -129,7 +134,7 @@ namespace QR_GEN.src
             // 
             this.append.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.append.AutoSize = true;
-            this.append.Location = new System.Drawing.Point(12, 381);
+            this.append.Location = new System.Drawing.Point(12, 376);
             this.append.Name = "append";
             this.append.Size = new System.Drawing.Size(88, 17);
             this.append.TabIndex = 4;
@@ -170,7 +175,7 @@ namespace QR_GEN.src
             this.passwdcheck.AutoSize = true;
             this.passwdcheck.Checked = true;
             this.passwdcheck.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.passwdcheck.Location = new System.Drawing.Point(12, 404);
+            this.passwdcheck.Location = new System.Drawing.Point(12, 399);
             this.passwdcheck.Name = "passwdcheck";
             this.passwdcheck.Size = new System.Drawing.Size(81, 17);
             this.passwdcheck.TabIndex = 5;
@@ -194,7 +199,7 @@ namespace QR_GEN.src
             // 
             this.qrhide.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.qrhide.AutoSize = true;
-            this.qrhide.Location = new System.Drawing.Point(12, 425);
+            this.qrhide.Location = new System.Drawing.Point(12, 420);
             this.qrhide.Name = "qrhide";
             this.qrhide.Size = new System.Drawing.Size(65, 17);
             this.qrhide.TabIndex = 7;
@@ -252,14 +257,14 @@ namespace QR_GEN.src
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
             this.panel1.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.panel1.Size = new System.Drawing.Size(466, 347);
+            this.panel1.Size = new System.Drawing.Size(466, 344);
             this.panel1.TabIndex = 11;
             // 
             // asciicheckbox
             // 
             this.asciicheckbox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.asciicheckbox.AutoSize = true;
-            this.asciicheckbox.Location = new System.Drawing.Point(106, 381);
+            this.asciicheckbox.Location = new System.Drawing.Point(106, 376);
             this.asciicheckbox.Name = "asciicheckbox";
             this.asciicheckbox.Size = new System.Drawing.Size(67, 17);
             this.asciicheckbox.TabIndex = 12;
@@ -267,11 +272,59 @@ namespace QR_GEN.src
             this.asciicheckbox.UseVisualStyleBackColor = true;
             this.asciicheckbox.CheckedChanged += new System.EventHandler(this.asciicheckbox_CheckedChanged);
             // 
+            // googleauthcheckbox
+            // 
+            this.googleauthcheckbox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.googleauthcheckbox.AutoSize = true;
+            this.googleauthcheckbox.Location = new System.Drawing.Point(106, 399);
+            this.googleauthcheckbox.Name = "googleauthcheckbox";
+            this.googleauthcheckbox.Size = new System.Drawing.Size(123, 17);
+            this.googleauthcheckbox.TabIndex = 13;
+            this.googleauthcheckbox.Text = "google authenticator";
+            this.googleauthcheckbox.UseVisualStyleBackColor = true;
+            // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(140, 418);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(100, 20);
+            this.textBox1.TabIndex = 14;
+            // 
+            // textBox2
+            // 
+            this.textBox2.Location = new System.Drawing.Point(298, 418);
+            this.textBox2.Name = "textBox2";
+            this.textBox2.Size = new System.Drawing.Size(100, 20);
+            this.textBox2.TabIndex = 15;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(104, 421);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(30, 13);
+            this.label2.TabIndex = 16;
+            this.label2.Text = "user:";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(246, 420);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(46, 13);
+            this.label3.TabIndex = 17;
+            this.label3.Text = "website:";
+            // 
             // Window
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(414, 445);
+            this.ClientSize = new System.Drawing.Size(414, 474);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.textBox2);
+            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.googleauthcheckbox);
             this.Controls.Add(this.asciicheckbox);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.qrhide);
@@ -282,8 +335,8 @@ namespace QR_GEN.src
             this.Controls.Add(this.generatebtn);
             this.Controls.Add(this.textbox);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.MaximumSize = new System.Drawing.Size(430, 484);
-            this.MinimumSize = new System.Drawing.Size(430, 484);
+            this.MaximumSize = new System.Drawing.Size(430, 513);
+            this.MinimumSize = new System.Drawing.Size(430, 513);
             this.Name = "Window";
             this.Text = "QR Code Creator v14.0.25420.1";
             this.Load += new System.EventHandler(this.Window_Load);
@@ -316,6 +369,11 @@ namespace QR_GEN.src
         private Label label1;
         private Panel panel1;
         public CheckBox asciicheckbox;
+        public CheckBox googleauthcheckbox;
+        private TextBox textBox1;
+        private TextBox textBox2;
+        private Label label2;
+        private Label label3;
     }
 }
 
