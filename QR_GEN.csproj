@@ -90,6 +90,7 @@
       <DependentUpon>QRDisplay.cs</DependentUpon>
     </Compile>
     <Compile Include="src\Generator.cs" />
+    <Compile Include="src\OTP.cs" />
     <Compile Include="src\Window.cs">
       <SubType>Form</SubType>
     </Compile>
