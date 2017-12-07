@@ -23,6 +23,25 @@ namespace QR_GEN.src
             return new Bitmap(code.GetGraphic(20), 260, 260);
         }
 
+        public Image AddQRLogo(Image img, Image qr)
+        {
+            if(img.Width != 45 && img.Height != 45)
+            {
+                //resize image and make a error aswell.
+                MessageBox.Show("the correct size is 45*45 however we try to resize it", "warning");
+                Bitmap b = new Bitmap(img, 45, 45);
+                img = b;
+            }
+            
+            //create new bitmap on base of QR
+            Bitmap a = new Bitmap(qr, 260, 260);
+            Graphics g = Graphics.FromImage(a);
+            g.DrawImage(img, new Point(a.Height/2-img.Height+22, a.Width/2-img.Width+22));
+            g.Save();
+
+            return a;
+        }
+
         public string GenerateAsciiQR(string text)
         {
             QRCodeGenerator gen = new QRCodeGenerator();

@@ -47,7 +47,6 @@ namespace QR_GEN.src
             this.notifyIcon = new System.Windows.Forms.NotifyIcon(this.components);
             this.menustrip = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.closeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.savefile = new System.Windows.Forms.SaveFileDialog();
             this.passwdcheck = new System.Windows.Forms.CheckBox();
             this.printbtn = new System.Windows.Forms.Button();
             this.qrhide = new System.Windows.Forms.CheckBox();
@@ -61,6 +60,10 @@ namespace QR_GEN.src
             this.googlewebsitetext = new System.Windows.Forms.TextBox();
             this.googleuserlabel = new System.Windows.Forms.Label();
             this.googlewebsitelabel = new System.Windows.Forms.Label();
+            this.logobtn = new System.Windows.Forms.Button();
+            this.logotext = new System.Windows.Forms.TextBox();
+            this.savefile = new System.Windows.Forms.SaveFileDialog();
+            this.icondialog = new System.Windows.Forms.OpenFileDialog();
             ((System.ComponentModel.ISupportInitialize)(this.picture)).BeginInit();
             this.menustrip.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -163,10 +166,6 @@ namespace QR_GEN.src
             this.closeToolStripMenuItem.Size = new System.Drawing.Size(101, 22);
             this.closeToolStripMenuItem.Text = "close";
             this.closeToolStripMenuItem.Click += new System.EventHandler(this.closeToolStripMenuItem_Click);
-            // 
-            // savefile
-            // 
-            this.savefile.FileOk += new System.ComponentModel.CancelEventHandler(this.savefile_FileOk);
             // 
             // passwdcheck
             // 
@@ -319,11 +318,46 @@ namespace QR_GEN.src
             this.googlewebsitelabel.TabIndex = 17;
             this.googlewebsitelabel.Text = "website:";
             // 
+            // logobtn
+            // 
+            this.logobtn.Location = new System.Drawing.Point(12, 444);
+            this.logobtn.Name = "logobtn";
+            this.logobtn.Size = new System.Drawing.Size(75, 23);
+            this.logobtn.TabIndex = 18;
+            this.logobtn.Text = "add logo...";
+            this.logobtn.UseVisualStyleBackColor = true;
+            this.logobtn.Click += new System.EventHandler(this.button2_Click);
+            // 
+            // logotext
+            // 
+            this.logotext.Enabled = false;
+            this.logotext.Location = new System.Drawing.Point(94, 446);
+            this.logotext.Name = "logotext";
+            this.logotext.Size = new System.Drawing.Size(65, 20);
+            this.logotext.TabIndex = 19;
+            this.logotext.TextChanged += new System.EventHandler(this.logotext_TextChanged);
+            // 
+            // savefile
+            // 
+            this.savefile.FileOk += new System.ComponentModel.CancelEventHandler(this.savefile_FileOk);
+            // 
+            // icondialog
+            // 
+            this.icondialog.AddExtension = false;
+            this.icondialog.DefaultExt = "*.png";
+            this.icondialog.DereferenceLinks = false;
+            this.icondialog.FileName = "icon.png";
+            this.icondialog.Filter = "png files|*.png|gif files|*.gif";
+            this.icondialog.Title = "open a png file";
+            this.icondialog.FileOk += new System.ComponentModel.CancelEventHandler(this.icondialog_FileOk);
+            // 
             // Window
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(414, 474);
+            this.Controls.Add(this.logotext);
+            this.Controls.Add(this.logobtn);
             this.Controls.Add(this.googlewebsitelabel);
             this.Controls.Add(this.googleuserlabel);
             this.Controls.Add(this.googlewebsitetext);
@@ -363,7 +397,6 @@ namespace QR_GEN.src
         private System.Windows.Forms.NotifyIcon notifyIcon;
         private System.Windows.Forms.ContextMenuStrip menustrip;
         private System.Windows.Forms.ToolStripMenuItem closeToolStripMenuItem;
-        private System.Windows.Forms.SaveFileDialog savefile;
         private CheckBox passwdcheck;
         private Button printbtn;
         public CheckBox append;
@@ -378,6 +411,10 @@ namespace QR_GEN.src
         private TextBox googlewebsitetext;
         private Label googleuserlabel;
         private Label googlewebsitelabel;
+        private Button logobtn;
+        private TextBox logotext;
+        private SaveFileDialog savefile;
+        private OpenFileDialog icondialog;
     }
 }
 

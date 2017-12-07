@@ -145,16 +145,42 @@ namespace QR_GEN.src
                     {
                         if (picture.Image == null)
                         {
-                            picture.Image = Generator.GetGenerator().GenerateQR(textbox.Text);
+                            if(logotext.Enabled && File.Exists(logotext.Text))
+                            {
+                                Image img = new Bitmap(Image.FromFile(logotext.Text));
+                                Image qr = Generator.GetGenerator().GenerateQR(textbox.Text);
+                                picture.Image = Generator.GetGenerator().AddQRLogo(img, qr);
+                            } else
+                            {
+                                picture.Image = Generator.GetGenerator().GenerateQR(textbox.Text);
+                            }
                         }
                         else
                         {
-                            picture.Image = Generator.GetGenerator().GenerateAppendedImage(textbox.Text, picture.Image);
+                            if (logotext.Enabled && File.Exists(logotext.Text))
+                            {
+                                Image img = new Bitmap(Image.FromFile(logotext.Text));
+                                Image qr = Generator.GetGenerator().GenerateQR(textbox.Text);
+                                picture.Image = Generator.GetGenerator().AddQRLogo(img, qr);
+                            }
+                            else
+                            {
+                                picture.Image = Generator.GetGenerator().GenerateAppendedImage(textbox.Text, picture.Image);
+                            }
                         }
                     }
                     else
                     {
-                        picture.Image = Generator.GetGenerator().GenerateQR(textbox.Text);
+                        if (logotext.Enabled && File.Exists(logotext.Text))
+                        {
+                            Image img = new Bitmap(Image.FromFile(logotext.Text));
+                            Image qr = Generator.GetGenerator().GenerateQR(textbox.Text);
+                            picture.Image = Generator.GetGenerator().AddQRLogo(img, qr);
+                        }
+                        else
+                        {
+                            picture.Image = Generator.GetGenerator().GenerateQR(textbox.Text);
+                        }
                     }
                 }
             } else
@@ -343,6 +369,32 @@ namespace QR_GEN.src
                 googleuserbox.Enabled = false;
                 googlewebsitelabel.Enabled = false;
                 googlewebsitetext.Enabled = false;
+            }
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            DialogResult r = icondialog.ShowDialog();
+            if(r == DialogResult.OK)
+            {
+                if(icondialog.CheckFileExists)
+                {
+                    logotext.Enabled = true;
+                    logotext.Text = icondialog.FileName;
+                }
+            }
+        }
+
+        private void icondialog_FileOk(object sender, CancelEventArgs e)
+        {
+
+        }
+
+        private void logotext_TextChanged(object sender, EventArgs e)
+        {
+            if(logotext.Text.Length == 0)
+            {
+                logotext.Enabled = false;
             }
         }
     }
