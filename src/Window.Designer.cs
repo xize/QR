@@ -347,7 +347,7 @@ namespace QR_GEN.src
             this.icondialog.DefaultExt = "*.png";
             this.icondialog.DereferenceLinks = false;
             this.icondialog.FileName = "icon.png";
-            this.icondialog.Filter = "png files|*.png";
+            this.icondialog.Filter = "png files|*.png|gif files|*.gif";
             this.icondialog.Title = "open a png file";
             this.icondialog.FileOk += new System.ComponentModel.CancelEventHandler(this.icondialog_FileOk);
             // 
